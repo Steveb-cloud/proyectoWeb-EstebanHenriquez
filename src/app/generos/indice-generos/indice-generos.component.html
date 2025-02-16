@@ -1,0 +1,36 @@
+<h2>Géneros</h2>
+<button mat-flat-button routerLink="/generos/crear">Crear Géneros</button>
+<button mat-stroked-button routerLink="">Cancelar</button>
+
+<table mat-table [dataSource]="listaGeneros" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Accion">
+      <th mat-header-cell *matHeaderCellDef> Acción </th>
+      <td mat-cell *matCellDef="let genero">
+        <a mat-flat-button routerLink="/generos/editar/{{genero.id}}">Editar</a> 
+        <button mat-flat-button style="background-color: red;" (click)="borrar(genero.id)">Borrar</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columnasMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasMostrar;"></tr>
+  </table>
+
+  <mat-paginator [length]="cantidadTotalRegistros"
+    [pageSize]="paginacion"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Seleccionar pagina"
+    (page)="actualizarPaginacion($event)"
+    >
+  </mat-paginator>
+  

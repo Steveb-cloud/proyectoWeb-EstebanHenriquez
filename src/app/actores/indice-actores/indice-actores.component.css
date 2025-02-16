@@ -1,0 +1,20 @@
+button{
+    margin-right: 1rem;
+}
+
+table{
+    margin-top: 1rem;
+}
+
+table button{
+    margin-left: 0.5rem;
+}
+
+img {
+    width: 30px; /* Tamaño pequeño */
+    height: 30px; /* Mismo tamaño en altura para hacerla circular */
+    border-radius: 50%; /* Hace la imagen redonda */
+    object-fit: cover; /* Asegura que la imagen se recorte adecuadamente para adaptarse al contorno redondo */
+    padding: 10px;  
+}
+  

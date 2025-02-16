@@ -1,0 +1,9 @@
+<h2>Editar Géneros</h2>
+
+@if(genero){
+    <app-formulario-genero [modelo]="genero" (posteoFormulario)="guardarCambios($event)"></app-formulario-genero>
+}@else {
+    <img src="loading.gif" alt="">
+}
+
+

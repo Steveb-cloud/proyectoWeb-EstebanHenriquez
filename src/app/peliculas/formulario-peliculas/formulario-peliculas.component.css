@@ -1,0 +1,12 @@
+button{
+    margin-right: 1rem;
+}
+
+mat-form-field{
+    width: 50%;
+    display: block;
+}
+
+.contenedor-botones{
+    margin-top: 2rem;
+}
