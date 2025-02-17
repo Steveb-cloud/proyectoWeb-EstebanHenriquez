@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormularioActoresComponent } from "../formulario-actores/formulario-actores.component";
 import { ActorCreacionDTO } from '../actores';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { ActoresService } from '../actores.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-actor',
@@ -9,9 +13,30 @@ import { ActorCreacionDTO } from '../actores';
   styleUrl: './crear-actor.component.css'
 })
 export class CrearActorComponent {
+  router = inject(Router);
+  actoresService = inject(ActoresService);
+  private _snackBar = inject(MatSnackBar);
 
-guardarCambios(actor: ActorCreacionDTO){
-console.log("creando el actor",actor);
-}
+  guardarCambios(actor: ActorCreacionDTO) {
+    console.log('Creando el actor', actor);
+    this.actoresService.crearActor(actor).subscribe({
+      next: (actor) => {
+        this.router.navigate(['/actores']);
+        this.openSnackBar("Se guardó con éxito el registro del actor");
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error === 404) {
+          this.openSnackBar("El actor no fue encontrado");
+        } else {
+          this.openSnackBar('Ocurrió un error desconocido');
+        }
+      }
+    });
+  }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "", {
+      duration: 4 * 1000,
+    });
+  }
 }

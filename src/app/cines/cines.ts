@@ -6,6 +6,7 @@ export interface CineDTO{
 }
 
 export interface CineCreacionDTO{
+    id: number;
     nombre: string;
     latitud: number;
     longitud: number;

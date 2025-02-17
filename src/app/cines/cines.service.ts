@@ -27,5 +27,13 @@ export class CinesService {
     return this.http.delete(`${this.urlBase}/${cineId}`);
   }
 
+  public actualizarCine(generoId:number,genero: CineDTO){
+    return this.http.put(`${this.urlBase}/${generoId}`,genero)
+  }
+
+  public crearCine(genero: CineDTO){
+    return this.http.post(this.urlBase,genero);
+  }
+
 }
 
