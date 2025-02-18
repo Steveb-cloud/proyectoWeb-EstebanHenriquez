@@ -19,19 +19,23 @@ export class CrearActorComponent {
 
   guardarCambios(actor: ActorCreacionDTO) {
     console.log('Creando el actor', actor);
-    this.actoresService.crearActor(actor).subscribe({
-      next: (actor) => {
+    this.actoresService.crearActor(actor).subscribe((res) =>{
+        console.log(res)
+    });     //{
+      
+      /*next: (actor) => {
         this.router.navigate(['/actores']);
         this.openSnackBar("Se guardó con éxito el registro del actor");
       },
       error: (error: HttpErrorResponse) => {
+        console.log("est"+error.message)
         if (error.error === 404) {
           this.openSnackBar("El actor no fue encontrado");
         } else {
           this.openSnackBar('Ocurrió un error desconocido');
         }
-      }
-    });
+      }*/
+   // });
   }
 
   openSnackBar(message: string) {

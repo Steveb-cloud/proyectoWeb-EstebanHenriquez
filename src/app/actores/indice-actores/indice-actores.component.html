@@ -2,7 +2,13 @@
 <button mat-flat-button routerLink="/actores/crear">Crear Actores</button>
 <button mat-stroked-button routerLink="">Cancelar</button>
 
-<table mat-table [dataSource]="listaActor" class="mat-elevation-z8">
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="Id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
