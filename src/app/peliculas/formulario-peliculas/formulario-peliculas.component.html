@@ -26,6 +26,19 @@
         titulo="Foto del Actor" (archivoSeleccionado)="archivoSeleccionado($event)"  ></app-input-img>
      </div>
 
+     <h4>Seleccione los Géneros</h4>
+
+    <app-selector-multiple [Seleccionado]="generosSeleccionados" [NoSeleccionado]="generosNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Cines</h4>
+
+    <app-selector-multiple [Seleccionado]="cinesSeleccionados" [NoSeleccionado]="cinesNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Actores</h4>
+
+    <app-autocomplete-actores [actoresSeleccionados]="actoresSeleccionados"></app-autocomplete-actores>
+
+
     <div class="contenedor-botones">
         <button mat-flat-button type="submit" [disabled]="form.invalid" >Guardar Cambios</button>
         <a mat-stroked-button routerLink="/">Cancelar</a>        
