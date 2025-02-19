@@ -13,6 +13,17 @@ export class ActoresService {
   private urlBase = "http://apicodersnet.runasp.net/api/actores";
 
   constructor() {}
+  
+  public crearActor(actor: ActorCreacionDTO){
+    const formData = new FormData();
+    // Añadir los datos al FormData
+  formData.append('nombre', actor.nombre);
+  formData.append('fechaNacimiento', actor.fechaNacimiento.toISOString().split('T')[0]); // Enviar la fecha en el formato correcto (yyyy-MM-dd)
+  if (actor.foto) {
+    formData.append('foto', actor.foto, actor.foto.name); // Asegúrate de enviar el archivo correctamente
+  }
+       return this.http.post(this.urlBase,formData);
+  }
 
   public obtenerActoresPaginacion(paginacion: paginacionDTO): Observable<HttpResponse<ActorDTO[]>> {
     let queryparams = construirQueryParams(paginacion);
@@ -25,10 +36,6 @@ export class ActoresService {
 
   public obtenerActorPorId(actorId: number): Observable<ActorDTO> {
     return this.http.get<ActorDTO>(`${this.urlBase}/${actorId}`);
-  }
-
-  public crearActor(actor: ActorCreacionDTO) {
-    return this.http.post(this.urlBase, actor);
   }
 
   public actualizarActor(actorId: number, actor: ActorCreacionDTO) {

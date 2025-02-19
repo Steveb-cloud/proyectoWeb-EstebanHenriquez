@@ -19,8 +19,8 @@ export class CrearActorComponent {
 
   guardarCambios(actor: ActorCreacionDTO) {
     console.log('Creando el actor', actor);
-    this.actoresService.crearActor(actor).subscribe((res) =>{
-        console.log(res)
+    this.actoresService.crearActor(actor).subscribe((any) =>{
+        console.log(any)
     });     //{
       
       /*next: (actor) => {
